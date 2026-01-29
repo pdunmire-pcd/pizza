@@ -10,6 +10,9 @@
 
     <!--stylesheet-->
     <link rel="stylesheet" href="styles/pizza-styles.css">
+
+    <!--js file-->
+    <script src="pizza.js" defer></script>
 </head>
 <body>
     <main>
@@ -28,18 +31,30 @@
         <fieldset>
             <!--First Name-->
             <legend>Contact Info</legend>
-            <label for="fname">First Name:</label>
+            <label for="fname">First Name:
+                <span class="err" id="err-fname">First name is required
+                </span>
+            </label>
             <input type="text" id="fname" name="fname">
             <!--Last Name-->
-            <label for="lname">Last Name:</label>
+            <label for="lname">Last Name:
+                <span class="err" id="err-lname">Last name is required
+                </span>
+            </label>
             <input type="text" id="lname" name="lname">
             <!--Email Address-->
-            <label for="email">Email Address:</label>
+            <label for="email">Email Address:
+                <span class="err" id="err-email">Valid email is required
+                </span>
+            </label>
             <input type="text" id="email" name="email">
         </fieldset>
 
         <fieldset>
             <legend>Select Pickup or Delivery</legend>
+            <span class="err" id="err-method">
+                Please select pickup or delivery
+            </span>
             <label for="pickup">
                 <input type="radio" id="pickup" value="pickup"
                 name="method">Pickup
@@ -110,12 +125,15 @@
         </fieldset>
         <fieldset>
             <legend>Pizza Size</legend>
-                <select name="size" id="size">
-                    <option value="none">-- Select a size --</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                </select>
+            <span class="err" id="err-size">
+                Please select a size
+            </span>
+            <select name="size" id="size">
+                <option value="none">-- Select a size --</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>    
         </fieldset>
         
         <!--Comment Field-->
