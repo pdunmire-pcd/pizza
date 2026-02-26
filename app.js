@@ -10,6 +10,9 @@ const PORT = 3000;
 //enable static file serving
 app.use(express.static('public'));
 
+//Set EJS as the view engine
+app.set('view engine', 'ejs');
+
 //"Middleware" that allows express to read the data in the form
 // form data and store it in req.body
 app.use(express.urlencoded({ extended:true }));
@@ -20,22 +23,22 @@ const orders = [];
 
 //Define our main route ("/")
 app.get('/', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render('home');
 });
 
 //  contact Route
 app.get('/contact-us', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/contact.html`);
+    res.render('contact');
 });
 
 //  Comfirmation Route
 app.get('/thank-you', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render('confirmation');
 });
 
 // Admin Route
 app.get('/admin', (req,res) => {
-    res.send(orders);
+    res.render('admin', { orders });
 });
 
 //  Submit Order Route
@@ -56,7 +59,7 @@ app.post('/submit-order', (req, res) => {
 
     // Add order object to orders array
     orders.push(order);
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    res.render('confirmation', { order : order });
 });
 
 //Start the server and listen on the defined port
