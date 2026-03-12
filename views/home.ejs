@@ -24,6 +24,13 @@
             <p>Come check us out</p>
             <a id="contact-button" href="/contact-us" role="button">Contact Us</a>
         </header>
+
+        <!-- Display form errors, if they exist -->
+        <% if (typeof errors != 'undefined') { %>
+            <% errors.forEach(error => { %>
+                <p><%= error %> </p>
+           <% });%>
+        <% } %>
         <form action="
         "></form>
         <form id="pizza-form" action="/submit-order" method="post">
@@ -35,7 +42,7 @@
                 <span class="err" id="err-fname">First name is required
                 </span>
             </label>
-            <input type="text" id="fname" name="fname">
+            <input type="text" id="fnaame" name="fname">
             <!--Last Name-->
             <label for="lname">Last Name:
                 <span class="err" id="err-lname">Last name is required
